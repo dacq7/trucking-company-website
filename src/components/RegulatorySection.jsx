@@ -54,7 +54,7 @@ export default function RegulatorySection() {
         <div className="regulatory-section__content">
           <div className="regulatory-section__image">
             <img
-              src="/images/regulatory/dot-inspection-weigh-station.png"
+              src={`${import.meta.env.BASE_URL}images/regulatory/dot-inspection-weigh-station.png`}
               alt="DOT inspection at weigh station"
             />
           </div>

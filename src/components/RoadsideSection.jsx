@@ -26,7 +26,7 @@ export default function RoadsideSection() {
         <div className="roadside-section__content">
           <div className="roadside-section__image">
             <img
-              src="/images/roadside/roadside-heavy-tow-service.png"
+              src={`${import.meta.env.BASE_URL}images/roadside/roadside-heavy-tow-service.png`}
               alt="Heavy duty tow service for trucks"
             />
           </div>

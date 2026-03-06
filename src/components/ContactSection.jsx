@@ -140,7 +140,7 @@ export default function ContactSection() {
           <div className="contact-section__info">
             <div className="contact-section__image">
               <img
-                src="/images/contact/contact-truck-night-highway.png"
+                src={`${import.meta.env.BASE_URL}images/contact/contact-truck-night-highway.png`}
                 alt="Truck on highway at night"
               />
             </div>

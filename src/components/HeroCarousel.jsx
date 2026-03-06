@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import './HeroCarousel.css'
 
 const heroImages = [
-  '/images/hero/hero-truck-highway-sunrise.png',
-  '/images/hero/hero-truck-fleet-yard.png',
-  '/images/hero/hero-truck-desert-highway.png',
-  '/images/hero/hero-truck-driver-documents.png',
-  '/images/hero/hero-heavy-duty-tow-truck.png',
+  `${import.meta.env.BASE_URL}images/hero/hero-truck-highway-sunrise.png`,
+  `${import.meta.env.BASE_URL}images/hero/hero-truck-fleet-yard.png`,
+  `${import.meta.env.BASE_URL}images/hero/hero-truck-desert-highway.png`,
+  `${import.meta.env.BASE_URL}images/hero/hero-truck-driver-documents.png`,
+  `${import.meta.env.BASE_URL}images/hero/hero-heavy-duty-tow-truck.png`,
 ]
 
 const CAROUSEL_INTERVAL = 5000

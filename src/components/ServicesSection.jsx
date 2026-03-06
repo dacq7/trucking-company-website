@@ -34,7 +34,7 @@ export default function ServicesSection() {
         <div className="services-section__content">
           <div className="services-section__image">
             <img
-              src="/images/services/insurance-truck-driver-inspection.png"
+              src={`${import.meta.env.BASE_URL}images/services/insurance-truck-driver-inspection.png`}
               alt="Truck driver inspection for insurance"
             />
           </div>
