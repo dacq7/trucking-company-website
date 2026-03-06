@@ -1,0 +1,33 @@
+.regulatory-section {
+  background-color: var(--color-light-gray);
+}
+
+.regulatory-section__content {
+  margin-top: 2rem;
+}
+
+.regulatory-section__image {
+  margin-bottom: 2rem;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.regulatory-section__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.regulatory-section__grid {
+  margin-top: 2rem;
+}
+
+.regulatory-section__card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.regulatory-section__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}

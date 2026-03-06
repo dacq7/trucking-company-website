@@ -1,0 +1,33 @@
+.services-section {
+  background-color: var(--color-white);
+}
+
+.services-section__content {
+  margin-top: 2rem;
+}
+
+.services-section__image {
+  margin-bottom: 2rem;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.services-section__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.services-section__grid {
+  margin-top: 2rem;
+}
+
+.services-section__card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.services-section__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}

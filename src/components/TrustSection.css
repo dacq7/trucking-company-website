@@ -1,0 +1,16 @@
+.trust-section {
+  background-color: var(--color-light-gray);
+}
+
+.trust-section__grid {
+  margin-top: 2rem;
+}
+
+.trust-section__card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-section__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
