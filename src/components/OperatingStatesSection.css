@@ -1,0 +1,24 @@
+.operating-states-section {
+  background-color: var(--color-white);
+}
+
+.operating-states-section__grid {
+  margin-top: 2rem;
+}
+
+.operating-states-section__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.operating-states-section__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.operating-states-section__state {
+  margin-bottom: 0;
+}

@@ -38,6 +38,18 @@ const regulatoryServices = [
     description: 'If your operating authority has been suspended, we assist in restoring it quickly so you can continue operating.',
   },
   {
+    title: 'License Plates',
+    description: 'We help you obtain and manage license plates for your commercial vehicles, ensuring your paperwork is accurate and up to date.',
+  },
+  {
+    title: 'New Mexico Permit',
+    description: 'We assist with New Mexico permitting requirements so your operation can run smoothly and stay compliant in-state.',
+  },
+  {
+    title: 'Houston Sand Permit',
+    description: 'We help secure the required Houston sand permit so you can operate and haul materials legally and without delays.',
+  },
+  {
     title: 'Drug & Alcohol Consortium Enrollment',
     description: 'Commercial drivers must participate in a federally approved drug and alcohol testing program. We help companies enroll and remain compliant.',
   },

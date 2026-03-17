@@ -18,6 +18,14 @@ const services = [
     description: 'General Liability insurance protects your business from claims related to third-party injuries or property damage that occur during your operations.',
   },
   {
+    title: 'Non Trucking',
+    description: 'Non-trucking liability coverage helps protect you when your truck is being used for personal reasons and not under dispatch for business operations.',
+  },
+  {
+    title: 'Bobtail',
+    description: 'Bobtail coverage provides liability protection when operating your truck without a trailer, such as when driving between jobs or to and from a terminal.',
+  },
+  {
     title: 'Workers Compensation',
     description: 'Workers Compensation insurance provides protection for employees in case of workplace injuries, covering medical expenses and lost wages.',
   },

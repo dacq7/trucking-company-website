@@ -21,7 +21,7 @@ export default function Navbar() {
     <header className="navbar" role="banner">
       <div className="navbar__container">
         <Link to="/" className="navbar__logo" onClick={closeMenu}>
-          Trucking Compliance
+          Elite Platinum Multiservices
         </Link>
 
         <button
