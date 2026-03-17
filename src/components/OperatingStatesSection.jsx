@@ -19,13 +19,13 @@ export default function OperatingStatesSection() {
         <p className="section-description">
           We currently support trucking companies operating across the following states.
         </p>
-        <div className="operating-states-section__grid grid-3">
+        <ul className="operating-states-section__tags" aria-label="Operating states">
           {operatingStates.map((state) => (
-            <article key={state} className="operating-states-section__card card">
-              <h3 className="card-title operating-states-section__state">{state}</h3>
-            </article>
+            <li key={state} className="operating-states-section__tag">
+              {state}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

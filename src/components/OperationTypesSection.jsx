@@ -26,13 +26,13 @@ export default function OperationTypesSection() {
         <p className="section-description">
           We tailor insurance and compliance solutions to a wide range of trucking operation types.
         </p>
-        <div className="operation-types-section__grid grid-3">
+        <ul className="operation-types-section__tags" aria-label="Operation types">
           {operationTypes.map((type) => (
-            <article key={type} className="operation-types-section__card card">
-              <h3 className="card-title operation-types-section__type">{type}</h3>
-            </article>
+            <li key={type} className="operation-types-section__tag">
+              {type}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
