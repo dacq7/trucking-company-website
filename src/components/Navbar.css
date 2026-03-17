@@ -66,6 +66,7 @@
 
 @media (max-width: 768px) {
   .navbar__nav {
+    display: none;
     position: fixed;
     top: var(--navbar-height);
     left: 0;
@@ -74,16 +75,13 @@
     background-color: var(--color-white);
     padding: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-  }
-
-  .navbar__nav--open {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+  }
+
+  .navbar__nav--open {
+    display: flex;
   }
 }
 
