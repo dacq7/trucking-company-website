@@ -39,7 +39,7 @@ export default function AboutSection() {
           </div>
           <div className="about-section__image">
             <img
-              src="/images/about/team-trucking-logistics-office.png"
+              src={`${import.meta.env.BASE_URL}images/about/team-trucking-logistics-office.png`}
               alt="Trucking logistics team in office"
             />
           </div>
