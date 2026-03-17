@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/#insurance', label: 'Insurance' },
-  { path: '/#compliance', label: 'Compliance' },
-  { path: '/#road-assistance', label: 'Road Assistance' },
-  { path: '/#about', label: 'About' },
-  { path: '/#contact', label: 'Contact' },
+  { href: '#home', label: 'Home' },
+  { href: '#services', label: 'Services' },
+  { href: '#compliance', label: 'Compliance' },
+  { href: '#roadside', label: 'Road Assistance' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -20,9 +19,9 @@ export default function Navbar() {
   return (
     <header className="navbar" role="banner">
       <div className="navbar__container">
-        <Link to="/" className="navbar__logo" onClick={closeMenu}>
+        <a href="#home" className="navbar__logo" onClick={closeMenu}>
           Elite Platinum Multiservices
-        </Link>
+        </a>
 
         <button
           className="navbar__hamburger"
@@ -43,24 +42,24 @@ export default function Navbar() {
         >
           <ul className="navbar__list">
             {navLinks.map((link) => (
-              <li key={link.path} className="navbar__item">
-                <Link
-                  to={link.path}
+              <li key={link.href} className="navbar__item">
+                <a
+                  href={link.href}
                   className="navbar__link"
                   onClick={closeMenu}
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
-          <Link
-            to="/#contact"
+          <a
+            href="#contact"
             className="navbar__cta btn-primary"
             onClick={closeMenu}
           >
             Get a Quote
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

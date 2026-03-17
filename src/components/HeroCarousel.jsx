@@ -27,7 +27,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <section className="hero" aria-label="Hero carousel">
+    <section className="hero" id="home" aria-label="Hero carousel">
       <div className="hero__carousel">
         {heroImages.map((src, index) => (
           <div

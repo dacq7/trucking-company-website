@@ -33,7 +33,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="services-section section" id="insurance">
+    <section className="services-section section" id="services">
       <div className="container">
         <h2 className="section-title">Insurance Solutions for Trucking Businesses</h2>
         <p className="section-description">

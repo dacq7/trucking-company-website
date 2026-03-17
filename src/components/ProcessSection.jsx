@@ -25,7 +25,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="process-section section">
+    <section className="process-section section" id="process">
       <div className="container">
         <h2 className="section-title">How Our Service Process Works</h2>
         <div className="process-section__steps">

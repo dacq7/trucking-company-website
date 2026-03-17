@@ -17,7 +17,7 @@ const roadsideServices = [
 
 export default function RoadsideSection() {
   return (
-    <section className="roadside-section section" id="road-assistance">
+    <section className="roadside-section section" id="roadside">
       <div className="container">
         <h2 className="section-title">Emergency Roadside Assistance</h2>
         <p className="section-description">

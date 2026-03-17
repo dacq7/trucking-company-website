@@ -20,7 +20,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="testimonials-section section">
+    <section className="testimonials-section section" id="testimonials">
       <div className="container">
         <h2 className="section-title">What Our Clients Say</h2>
         <div className="testimonials-section__grid grid-3">
