@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './ContactSection.css'
-import PrivacyPolicyContent from './PrivacyPolicyContent'
+import PrivacyPolicyModal from './PrivacyPolicyModal'
 
 const SERVICE_OPTIONS = [
   'Insurance Services',
@@ -37,17 +37,6 @@ export default function ContactSection() {
   const [errors, setErrors] = useState(initialErrors)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
-
-  useEffect(() => {
-    if (!isPrivacyOpen) return
-
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') setIsPrivacyOpen(false)
-    }
-
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [isPrivacyOpen])
 
   const validateForm = () => {
     const newErrors = { ...initialErrors }
@@ -313,32 +302,7 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {isPrivacyOpen && (
-        <div
-          className="contact-section__modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Privacy Policy"
-          onClick={() => setIsPrivacyOpen(false)}
-        >
-          <div
-            className="contact-section__modal card"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="contact-section__modal-close"
-              aria-label="Close privacy policy"
-              onClick={() => setIsPrivacyOpen(false)}
-            >
-              ×
-            </button>
-            <div className="contact-section__modal-body">
-              <PrivacyPolicyContent />
-            </div>
-          </div>
-        </div>
-      )}
+      <PrivacyPolicyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </section>
   )
 }

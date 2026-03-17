@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import './Footer.css'
+import PrivacyPolicyModal from './PrivacyPolicyModal'
 
 const footerLinks = [
-  { path: '/#insurance', label: 'Insurance Services' },
-  { path: '/#compliance', label: 'DOT Compliance' },
-  { path: '/#road-assistance', label: 'Roadside Assistance' },
-  { path: '/#contact', label: 'Contact' },
-  { path: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '#services', label: 'Insurance Services' },
+  { href: '#compliance', label: 'DOT Compliance' },
+  { href: '#roadside', label: 'Roadside Assistance' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export default function Footer() {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
+
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer__container">
@@ -22,19 +24,30 @@ export default function Footer() {
           <nav className="footer__nav" aria-label="Footer navigation">
             <ul className="footer__links">
               {footerLinks.map((link) => (
-                <li key={link.path}>
-                  <Link to={link.path} className="footer__link">
+                <li key={link.href}>
+                  <a href={link.href} className="footer__link">
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  className="footer__link footer__privacy-button"
+                  onClick={() => setIsPrivacyOpen(true)}
+                >
+                  Privacy Policy
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
         <div className="footer__bottom">
-          <p>© 2026 Trucking Compliance Services. All rights reserved.</p>
+          <p>© 2026 Elite Platinum Multiservices. All rights reserved.</p>
         </div>
       </div>
+
+      <PrivacyPolicyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </footer>
   )
 }
