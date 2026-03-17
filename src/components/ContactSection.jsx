@@ -93,14 +93,37 @@ export default function ContactSection() {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!validateForm()) return
 
-    // Simulate form submission (no backend yet)
-    setIsSubmitted(true)
-    setFormData(initialFormState)
-    setErrors(initialErrors)
+    const url =
+      'https://script.google.com/macros/s/AKfycbw0ca6v6tqV16xeAS2oOOUlRfnaXBabHU3M7I9LxrnY7bqv5KJVwARw8dOSVXgO9jyW/exec'
+
+    const formPayload = new FormData()
+    formPayload.append('fullName', formData.fullName)
+    formPayload.append('companyName', formData.companyName)
+    formPayload.append('phone', formData.phone)
+    formPayload.append('email', formData.email)
+    formPayload.append('service', formData.serviceNeeded)
+    formPayload.append('message', formData.message)
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: formPayload,
+      })
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`)
+      }
+
+      setIsSubmitted(true)
+      setFormData(initialFormState)
+      setErrors(initialErrors)
+    } catch (error) {
+      console.error('Contact form submission failed', error)
+    }
   }
 
   if (isSubmitted) {
