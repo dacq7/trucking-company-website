@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import './ContactSection.css'
+import PrivacyPolicyContent from './PrivacyPolicyContent'
 
 const SERVICE_OPTIONS = [
   'Insurance Services',
@@ -10,7 +10,7 @@ const SERVICE_OPTIONS = [
   'Roadside Assistance',
 ]
 
-const PRIVACY_CHECKBOX_TEXT = 'I accept the Privacy Policy and authorize the processing of my personal data.'
+const PRIVACY_CHECKBOX_TEXT = 'I accept the privacy policy'
 
 const initialFormState = {
   fullName: '',
@@ -36,6 +36,18 @@ export default function ContactSection() {
   const [formData, setFormData] = useState(initialFormState)
   const [errors, setErrors] = useState(initialErrors)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isPrivacyOpen) return
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsPrivacyOpen(false)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isPrivacyOpen])
 
   const validateForm = () => {
     const newErrors = { ...initialErrors }
@@ -69,11 +81,6 @@ export default function ContactSection() {
 
     if (!formData.serviceNeeded) {
       newErrors.serviceNeeded = 'Please select a service'
-      isValid = false
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
       isValid = false
     }
 
@@ -252,7 +259,7 @@ export default function ContactSection() {
             </div>
 
             <div className="contact-section__field">
-              <label htmlFor="message">Message *</label>
+              <label htmlFor="message">Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -284,9 +291,13 @@ export default function ContactSection() {
               />
               <label htmlFor="privacyAccepted">
                 {PRIVACY_CHECKBOX_TEXT}{' '}
-                <Link to="/privacy-policy" className="contact-section__privacy-link">
+                <button
+                  type="button"
+                  className="contact-section__privacy-link"
+                  onClick={() => setIsPrivacyOpen(true)}
+                >
                   Privacy Policy
-                </Link>
+                </button>
               </label>
               {errors.privacyAccepted && (
                 <span id="privacy-error" className="contact-section__error" role="alert">
@@ -301,6 +312,33 @@ export default function ContactSection() {
           </form>
         </div>
       </div>
+
+      {isPrivacyOpen && (
+        <div
+          className="contact-section__modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Privacy Policy"
+          onClick={() => setIsPrivacyOpen(false)}
+        >
+          <div
+            className="contact-section__modal card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="contact-section__modal-close"
+              aria-label="Close privacy policy"
+              onClick={() => setIsPrivacyOpen(false)}
+            >
+              ×
+            </button>
+            <div className="contact-section__modal-body">
+              <PrivacyPolicyContent />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
