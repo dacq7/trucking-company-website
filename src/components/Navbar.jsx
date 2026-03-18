@@ -20,7 +20,11 @@ export default function Navbar() {
     <header className="navbar" role="banner">
       <div className="navbar__container">
         <a href="#home" className="navbar__logo" onClick={closeMenu}>
-          Elite Platinum Multiservices
+          <img
+            src={`${import.meta.env.BASE_URL}images/logo/logo.svg`}
+            alt="Elite Platinum Multiservices"
+            className="navbar__logo-img"
+          />
         </a>
 
         <button
