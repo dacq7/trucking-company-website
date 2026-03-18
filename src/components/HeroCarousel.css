@@ -73,12 +73,13 @@
 .hero__highlight {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: rgba(198, 40, 40, 0.9);
-  color: var(--color-white);
+  padding: 0.35rem 0.8rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
   font-size: var(--font-small);
-  font-weight: 600;
-  border-radius: var(--button-radius);
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero__buttons {
@@ -89,6 +90,29 @@
 
 .hero__btn {
   min-height: var(--touch-target-min);
+  padding: 0.9rem 2.2rem;
+  font-size: 1.05rem;
+}
+
+.hero__btn.btn-primary {
+  box-shadow: 0 6px 18px rgba(198, 40, 40, 0.35);
+  transform: translateY(0);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hero__btn.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(198, 40, 40, 0.45);
+}
+
+.hero__btn.btn-secondary {
+  border-width: 2px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.hero__btn.btn-secondary:hover {
+  transform: translateY(-1px);
 }
 
 .hero__indicators {
