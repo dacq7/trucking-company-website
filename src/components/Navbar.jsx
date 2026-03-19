@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Navbar.css'
 
 const navLinks = [
@@ -12,12 +12,20 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
 
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="navbar" role="banner">
+    <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`} role="banner">
       <div className="navbar__container">
         <a href="#home" className="navbar__logo" onClick={closeMenu}>
           <img

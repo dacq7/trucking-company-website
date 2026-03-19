@@ -49,7 +49,11 @@
   font-size: var(--font-body);
   border: none;
   border-radius: var(--button-radius);
-  transition: background-color 0.2s ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 .btn-primary:hover {
@@ -68,12 +72,48 @@
   font-size: var(--font-body);
   border: 2px solid var(--color-accent);
   border-radius: var(--button-radius);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 .btn-secondary:hover {
   background-color: var(--color-accent);
   color: var(--color-white);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .btn-primary:hover {
+    transform: scale(1.04);
+    box-shadow: 0 10px 28px rgba(198, 40, 40, 0.35);
+  }
+
+  .btn-secondary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 28px rgba(15, 42, 68, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 /* Card styles */
@@ -82,6 +122,24 @@
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
   padding: var(--card-padding);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+    box-shadow: var(--card-shadow);
+  }
 }
 
 .card-title {

@@ -199,3 +199,56 @@
 .contact-section__submit-another {
   margin-top: 0.5rem;
 }
+
+.contact-section__submit:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact-section__submit-spinner {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-top-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  animation: contact-spin 700ms linear infinite;
+}
+
+.contact-section__submit-error {
+  margin-top: -0.25rem;
+  font-size: var(--font-small);
+  color: var(--color-accent);
+  text-align: center;
+}
+
+.contact-section__success {
+  animation: contact-success-fade-in 450ms ease both;
+}
+
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes contact-success-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-section__submit-spinner {
+    animation: none;
+  }
+  .contact-section__success {
+    animation: none;
+  }
+}

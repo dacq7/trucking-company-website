@@ -36,6 +36,8 @@ export default function ContactSection() {
   const [formData, setFormData] = useState(initialFormState)
   const [errors, setErrors] = useState(initialErrors)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
 
   const validateForm = () => {
@@ -97,6 +99,9 @@ export default function ContactSection() {
     e.preventDefault()
     if (!validateForm()) return
 
+    setIsSubmitting(true)
+    setSubmitError('')
+
     const url =
       'https://script.google.com/macros/s/AKfycbw0ca6v6tqV16xeAS2oOOUlRfnaXBabHU3M7I9LxrnY7bqv5KJVwARw8dOSVXgO9jyW/exec'
 
@@ -123,7 +128,10 @@ export default function ContactSection() {
       setErrors(initialErrors)
     } catch (error) {
       console.error('Contact form submission failed', error)
+      setSubmitError('Submission failed. Please try again.')
     }
+
+    setIsSubmitting(false)
   }
 
   if (isSubmitted) {
@@ -138,7 +146,10 @@ export default function ContactSection() {
             <button
               type="button"
               className="btn-secondary contact-section__submit-another"
-              onClick={() => setIsSubmitted(false)}
+                onClick={() => {
+                  setIsSubmitted(false)
+                  setSubmitError('')
+                }}
             >
               Submit Another Request
             </button>
@@ -318,9 +329,26 @@ export default function ContactSection() {
               )}
             </div>
 
-            <button type="submit" className="btn-primary contact-section__submit">
-              Submit Request
+            <button
+              type="submit"
+              className="btn-primary contact-section__submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <span className="contact-section__submit-spinner" aria-hidden="true" />
+                  Submitting...
+                </>
+              ) : (
+                'Submit Request'
+              )}
             </button>
+
+            {submitError && (
+              <p className="contact-section__submit-error" role="alert">
+                {submitError}
+              </p>
+            )}
           </form>
         </div>
       </div>

@@ -95,6 +95,39 @@ button {
   cursor: pointer;
 }
 
+/* Scroll reveal (IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: transform;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional stagger for hero elements (no layout shift) */
+.hero__title.reveal {
+  transition-delay: 0ms;
+}
+.hero__subtitle.reveal {
+  transition-delay: 120ms;
+}
+.hero__highlights.reveal,
+.hero__buttons.reveal {
+  transition-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Responsive typography */
 @media (max-width: 1024px) {
   :root {
