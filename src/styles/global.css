@@ -109,6 +109,12 @@ button {
     --font-hero-title: 28px;
     --font-hero-subtitle: 16px;
     --font-section-title: 24px;
-    --navbar-height: 108px;
+    --navbar-height: 86px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  :root {
+    --navbar-height: 80px;
   }
 }
