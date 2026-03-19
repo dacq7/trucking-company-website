@@ -174,7 +174,7 @@
     min-height: 500px;
   }
 
-  .hero__buttons {
+  .hero .hero__buttons {
     flex-wrap: wrap;
   }
 }
@@ -205,19 +205,20 @@
     min-height: 460px;
   }
 
-  .hero__title {
+  /* Higher specificity so mobile rules win over tablet (<=1280px) if CSS bundle order varies */
+  .hero .hero__title {
     font-size: clamp(1.8rem, 5.5vw, 2.2rem);
     line-height: 1.25;
     margin-bottom: 1.125rem;
   }
 
-  .hero__subtitle {
+  .hero .hero__subtitle {
     font-size: clamp(1rem, 2.8vw, 1.1rem);
     line-height: 1.55;
     margin-bottom: 1.5rem;
   }
 
-  .hero__overlay {
+  .hero .hero__overlay {
     background: linear-gradient(
       to bottom,
       rgba(15, 42, 68, 0.95) 0%,
@@ -226,19 +227,19 @@
     );
   }
 
-  .hero__highlights {
+  .hero .hero__highlights {
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
 
-  .hero__buttons {
+  .hero .hero__buttons {
     flex-direction: column;
     gap: 1rem;
     margin-top: 0.5rem;
   }
 
-  .hero__btn {
+  .hero .hero__btn {
     width: 100%;
     justify-content: center;
     min-height: 48px;
