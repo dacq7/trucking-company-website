@@ -133,6 +133,7 @@
   width: 100%;
   max-width: 900px;
   max-height: calc(100vh - var(--navbar-height) - 48px);
+  max-height: calc(100dvh - var(--navbar-height) - 48px);
   overflow: auto;
   position: relative;
 }
