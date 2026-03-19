@@ -23,11 +23,14 @@
 .navbar__logo {
   display: flex;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .navbar__logo-img {
   height: 120px;
   width: auto;
+  max-width: 100%;
   object-fit: contain;
   max-height: 100%;
   transform: scale(1.05);
@@ -91,7 +94,7 @@
     padding: 1rem;
     box-shadow: var(--card-shadow);
     border-radius: var(--card-radius);
-    width: min(360px, calc(100vw - (var(--container-padding-mobile) * 2)));
+    width: min(360px, 100%);
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
