@@ -142,3 +142,10 @@
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .navbar__logo-img {
+    height: 92px;
+    transform: none;
+  }
+}
