@@ -22,14 +22,23 @@ export default function Home() {
         '.hero__subtitle',
         '.hero__highlights',
         '.hero__buttons',
-        '.hero__btn',
+        // Section titles
         '.section-title',
-        '.card',
-        '.services-section__card',
-        '.regulatory-section__card',
-        '.roadside-section__card',
-        '.trust-section__card',
-        '.mobile-welding-section__card',
+        // Service-type split sections
+        '.services-section__item',
+        '.mobile-welding-section__item',
+        '.regulatory-section__item',
+        '.roadside-section__item',
+        // Trust 2×2 grid
+        '.trust-section__item',
+        // Testimonials
+        '.testimonials-section__featured',
+        '.testimonials-section__card-sm',
+        // About values
+        '.about-section__value',
+        // Process steps
+        '.process-section__step',
+        // Tags
         '.operating-states-section__tag',
         '.operation-types-section__tag',
       ].join(','),
@@ -46,7 +55,7 @@ export default function Home() {
           }
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.12 },
     )
 
     targets.forEach((el) => {

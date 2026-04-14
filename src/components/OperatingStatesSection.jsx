@@ -20,8 +20,12 @@ export default function OperatingStatesSection() {
           We currently support trucking companies operating across the following states.
         </p>
         <ul className="operating-states-section__tags" aria-label="Operating states">
-          {operatingStates.map((state) => (
-            <li key={state} className="operating-states-section__tag">
+          {operatingStates.map((state, index) => (
+            <li
+              key={state}
+              className="operating-states-section__tag"
+              style={{ '--stagger-index': index }}
+            >
               {state}
             </li>
           ))}

@@ -35,19 +35,22 @@ export default function MobileWeldingSection() {
         <p className="section-description">
           Mobile welding for trucks and heavy-duty equipment, including trailer repair and structural welding.
         </p>
-
-        <div className="mobile-welding-section__content">
-          <div className="mobile-welding-section__image">
+        <div className="mobile-welding-section__split">
+          <div className="mobile-welding-section__image-col">
             <img
               src={`${import.meta.env.BASE_URL}images/services/mobile-welding-truck-trailer-repair.png`}
               alt="Mobile welding service for trucks and trailers"
             />
           </div>
-          <div className="mobile-welding-section__grid grid-3">
-            {mobileWeldingServices.map((service) => (
-              <article key={service.title} className="mobile-welding-section__card card">
-                <h3 className="card-title">{service.title}</h3>
-                <p className="card-description">{service.description}</p>
+          <div className="mobile-welding-section__list">
+            {mobileWeldingServices.map((service, index) => (
+              <article
+                key={service.title}
+                className="mobile-welding-section__item"
+                style={{ '--stagger-index': index }}
+              >
+                <h3 className="mobile-welding-section__item-title">{service.title}</h3>
+                <p className="mobile-welding-section__item-desc">{service.description}</p>
               </article>
             ))}
           </div>

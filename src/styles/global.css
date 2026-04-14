@@ -10,7 +10,10 @@
   --color-dark-gray: #1F2933;
 
   /* Typography */
-  --font-primary: 'Inter', Arial, Helvetica, sans-serif;
+  --font-primary: 'Outfit', Arial, Helvetica, sans-serif;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Font Sizes */
   --font-hero-title: 48px;
@@ -29,14 +32,14 @@
   --container-padding-mobile: 20px;
 
   /* Buttons */
-  --button-radius: 6px;
+  --button-radius: 5px;
   --button-padding-y: 14px;
   --button-padding-x: 28px;
   --button-font-weight: 600;
 
   /* Cards */
   --card-radius: 10px;
-  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 2px 16px rgba(15, 42, 68, 0.07);
   --card-padding: 24px;
 
   /* Navbar */
@@ -99,8 +102,10 @@ button {
 .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 600ms ease, transform 600ms ease;
-  will-change: transform;
+  transition:
+    opacity 640ms var(--ease-out-expo) calc(var(--stagger-index, 0) * 60ms),
+    transform 640ms var(--ease-out-expo) calc(var(--stagger-index, 0) * 60ms);
+  will-change: transform, opacity;
 }
 
 .reveal--visible {
@@ -108,7 +113,7 @@ button {
   transform: translateY(0);
 }
 
-/* Optional stagger for hero elements (no layout shift) */
+/* Hero stagger overrides (no additional delay for hero elements) */
 .hero__title.reveal {
   transition-delay: 0ms;
 }

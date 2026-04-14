@@ -27,8 +27,12 @@ export default function OperationTypesSection() {
           We tailor insurance and compliance solutions to a wide range of trucking operation types.
         </p>
         <ul className="operation-types-section__tags" aria-label="Operation types">
-          {operationTypes.map((type) => (
-            <li key={type} className="operation-types-section__tag">
+          {operationTypes.map((type, index) => (
+            <li
+              key={type}
+              className="operation-types-section__tag"
+              style={{ '--stagger-index': index }}
+            >
               {type}
             </li>
           ))}

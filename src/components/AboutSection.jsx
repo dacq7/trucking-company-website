@@ -30,7 +30,7 @@ export default function AboutSection() {
             </p>
             <div className="about-section__values">
               {coreValues.map((value) => (
-                <article key={value.title} className="about-section__value card">
+                <article key={value.title} className="about-section__value">
                   <h3 className="card-title">{value.title}</h3>
                   <p className="card-description">{value.description}</p>
                 </article>

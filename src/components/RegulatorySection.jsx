@@ -63,18 +63,22 @@ export default function RegulatorySection() {
         <p className="section-description">
           Operating a trucking company requires compliance with several federal regulations. Our team helps ensure that your business remains fully compliant with all required filings and registrations.
         </p>
-        <div className="regulatory-section__content">
-          <div className="regulatory-section__image">
+        <div className="regulatory-section__split">
+          <div className="regulatory-section__image-col">
             <img
               src={`${import.meta.env.BASE_URL}images/regulatory/dot-inspection-weigh-station.png`}
               alt="DOT inspection at weigh station"
             />
           </div>
-          <div className="regulatory-section__grid grid-3">
-            {regulatoryServices.map((service) => (
-              <article key={service.title} className="regulatory-section__card card">
-                <h3 className="card-title">{service.title}</h3>
-                <p className="card-description">{service.description}</p>
+          <div className="regulatory-section__list">
+            {regulatoryServices.map((service, index) => (
+              <article
+                key={service.title}
+                className="regulatory-section__item"
+                style={{ '--stagger-index': index }}
+              >
+                <h3 className="regulatory-section__item-title">{service.title}</h3>
+                <p className="regulatory-section__item-desc">{service.description}</p>
               </article>
             ))}
           </div>

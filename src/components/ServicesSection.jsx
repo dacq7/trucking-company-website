@@ -39,18 +39,22 @@ export default function ServicesSection() {
         <p className="section-description">
           We provide specialized insurance coverage designed to protect trucking companies, drivers, and transported cargo.
         </p>
-        <div className="services-section__content">
-          <div className="services-section__image">
+        <div className="services-section__split">
+          <div className="services-section__image-col">
             <img
               src={`${import.meta.env.BASE_URL}images/services/insurance-truck-driver-inspection.png`}
               alt="Truck driver inspection for insurance"
             />
           </div>
-          <div className="services-section__grid grid-3">
-            {services.map((service) => (
-              <article key={service.title} className="services-section__card card">
-                <h3 className="card-title">{service.title}</h3>
-                <p className="card-description">{service.description}</p>
+          <div className="services-section__list">
+            {services.map((service, index) => (
+              <article
+                key={service.title}
+                className="services-section__item"
+                style={{ '--stagger-index': index }}
+              >
+                <h3 className="services-section__item-title">{service.title}</h3>
+                <p className="services-section__item-desc">{service.description}</p>
               </article>
             ))}
           </div>

@@ -27,11 +27,18 @@ export default function TrustSection() {
         <p className="section-description">
           Our team specializes in helping trucking companies navigate insurance requirements, federal regulations, and roadside emergencies. We provide reliable support so drivers and fleet owners can focus on what matters most — keeping their trucks moving.
         </p>
-        <div className="trust-section__grid grid-3">
-          {trustItems.map((item) => (
-            <article key={item.title} className="trust-section__card card">
-              <h3 className="card-title">{item.title}</h3>
-              <p className="card-description">{item.description}</p>
+        <div className="trust-section__grid">
+          {trustItems.map((item, index) => (
+            <article
+              key={item.title}
+              className="trust-section__item"
+              style={{ '--stagger-index': index }}
+            >
+              <span className="trust-section__watermark" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 className="trust-section__title">{item.title}</h3>
+              <p className="trust-section__description">{item.description}</p>
             </article>
           ))}
         </div>

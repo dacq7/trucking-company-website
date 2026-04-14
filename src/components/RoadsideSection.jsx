@@ -23,18 +23,22 @@ export default function RoadsideSection() {
         <p className="section-description">
           Unexpected situations happen on the road. Our roadside support services help truck drivers resolve emergencies quickly and safely.
         </p>
-        <div className="roadside-section__content">
-          <div className="roadside-section__image">
+        <div className="roadside-section__split">
+          <div className="roadside-section__image-col">
             <img
               src={`${import.meta.env.BASE_URL}images/roadside/roadside-heavy-tow-service.png`}
               alt="Heavy duty tow service for trucks"
             />
           </div>
-          <div className="roadside-section__grid grid-3">
-            {roadsideServices.map((service) => (
-              <article key={service.title} className="roadside-section__card card">
-                <h3 className="card-title">{service.title}</h3>
-                <p className="card-description">{service.description}</p>
+          <div className="roadside-section__services">
+            {roadsideServices.map((service, index) => (
+              <article
+                key={service.title}
+                className="roadside-section__item"
+                style={{ '--stagger-index': index }}
+              >
+                <h3 className="roadside-section__item-title">{service.title}</h3>
+                <p className="roadside-section__item-desc">{service.description}</p>
               </article>
             ))}
           </div>

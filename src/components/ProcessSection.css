@@ -6,12 +6,30 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+/* Horizontal connector line behind all steps */
+.process-section__steps::before {
+  content: '';
+  position: absolute;
+  top: 29px; /* vertical center of the 60px circle */
+  left: 12.5%;
+  width: 75%;
+  height: 1px;
+  background: rgba(198, 40, 40, 0.2);
+  z-index: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 1024px) {
   .process-section__steps {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-section__steps::before {
+    display: none;
   }
 }
 
@@ -28,6 +46,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  z-index: 1;
 }
 
 .process-section__number {
@@ -36,13 +55,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--color-light-gray); /* masks the connector line behind */
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+  transition:
+    background-color 0.3s var(--ease-out-expo),
+    color 0.3s var(--ease-out-expo),
+    box-shadow 0.3s var(--ease-out-expo);
+}
+
+.process-section__step:hover .process-section__number {
   background-color: var(--color-accent);
   color: var(--color-white);
-  font-size: 1.5rem;
-  font-weight: 700;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  flex-shrink: 0;
+  box-shadow: 0 4px 18px rgba(198, 40, 40, 0.35);
 }
 
 .process-section__content {
@@ -50,35 +81,19 @@
 }
 
 .process-section__title {
-  font-size: var(--font-card-title);
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
 }
 
 .process-section__description {
-  font-size: var(--font-body);
+  font-size: var(--font-small);
   color: var(--color-medium-gray);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .process-section__connector {
   display: none;
-}
-
-@media (min-width: 1025px) {
-  .process-section__connector {
-    display: block;
-    position: absolute;
-    top: 30px;
-    right: -1rem;
-    width: 2rem;
-    height: 2px;
-    background-color: var(--color-accent);
-    opacity: 0.5;
-  }
-
-  .process-section__step:last-child .process-section__connector {
-    display: none;
-  }
 }

@@ -21,15 +21,23 @@
 }
 
 .contact-section__image {
-  border-radius: var(--card-radius);
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 4px 28px rgba(15, 42, 68, 0.1);
+  position: sticky;
+  top: calc(var(--navbar-height) + 2rem);
 }
 
 .contact-section__image img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media (max-width: 768px) {
+  .contact-section__image {
+    position: static;
+  }
 }
 
 .contact-section__form {
@@ -46,8 +54,9 @@
 
 .contact-section__field label {
   font-size: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-primary);
+  letter-spacing: -0.01em;
 }
 
 .contact-section__field input,
@@ -56,9 +65,13 @@
   font-family: var(--font-primary);
   font-size: var(--font-body);
   padding: 12px 16px;
-  border: 2px solid #e0e0e0;
+  border: 1.5px solid rgba(15, 42, 68, 0.18);
   border-radius: var(--button-radius);
-  transition: border-color 0.2s ease;
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  transition:
+    border-color 0.25s var(--ease-out-expo),
+    box-shadow 0.25s var(--ease-out-expo);
   min-height: var(--touch-target-min);
 }
 
@@ -67,12 +80,19 @@
 .contact-section__field textarea:focus {
   outline: none;
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(15, 42, 68, 0.1);
 }
 
 .contact-section__field input.contact-section__input--error,
 .contact-section__field select.contact-section__input--error,
 .contact-section__field textarea.contact-section__input--error {
   border-color: var(--color-accent);
+}
+
+.contact-section__field input.contact-section__input--error:focus,
+.contact-section__field select.contact-section__input--error:focus,
+.contact-section__field textarea.contact-section__input--error:focus {
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
 }
 
 .contact-section__field textarea {
@@ -97,6 +117,7 @@
   min-height: 20px;
   margin-top: 2px;
   flex-shrink: 0;
+  accent-color: var(--color-primary);
 }
 
 .contact-section__checkbox label {
@@ -168,6 +189,10 @@
   padding: 3rem;
   max-width: 500px;
   margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  animation: contact-success-fade-in 450ms var(--ease-out-expo) both;
 }
 
 .contact-section__success-icon {
@@ -186,7 +211,9 @@
 
 .contact-section__success h3 {
   font-size: var(--font-section-title);
+  font-weight: 800;
   color: var(--color-primary);
+  letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 
@@ -210,7 +237,7 @@
   width: 16px;
   height: 16px;
   margin-right: 0.75rem;
-  border: 2px solid rgba(255, 255, 255, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.45);
   border-top-color: rgba(255, 255, 255, 1);
   border-radius: 50%;
   animation: contact-spin 700ms linear infinite;
@@ -223,10 +250,6 @@
   text-align: center;
 }
 
-.contact-section__success {
-  animation: contact-success-fade-in 450ms ease both;
-}
-
 @keyframes contact-spin {
   to {
     transform: rotate(360deg);
@@ -236,7 +259,7 @@
 @keyframes contact-success-fade-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
