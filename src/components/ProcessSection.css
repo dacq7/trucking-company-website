@@ -21,6 +21,13 @@
   background: rgba(198, 40, 40, 0.2);
   z-index: 0;
   pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-section__steps.reveal--visible::before {
+  transform: scaleX(1);
 }
 
 @media (max-width: 1024px) {
@@ -96,4 +103,11 @@
 
 .process-section__connector {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-section__steps::before {
+    transition: none;
+    transform: scaleX(1);
+  }
 }

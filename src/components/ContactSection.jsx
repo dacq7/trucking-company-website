@@ -86,12 +86,53 @@ export default function ContactSection() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }))
+    let finalValue = type === 'checkbox' ? checked : value
+
+    if (name === 'phone') {
+      const digits = value.replace(/\D/g, '').slice(0, 10)
+      if (digits.length <= 3) {
+        finalValue = digits.length ? `(${digits}` : ''
+      } else if (digits.length <= 6) {
+        finalValue = `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+      } else {
+        finalValue = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+      }
+    }
+
+    setFormData((prev) => ({ ...prev, [name]: finalValue }))
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }))
+    }
+  }
+
+  const handleBlur = (e) => {
+    const { name } = e.target
+    const newErrors = { ...initialErrors }
+
+    if (name === 'fullName' && !formData.fullName.trim()) {
+      newErrors.fullName = 'Full name is required'
+    } else if (name === 'companyName' && !formData.companyName.trim()) {
+      newErrors.companyName = 'Company name is required'
+    } else if (name === 'phone') {
+      if (!formData.phone.trim()) {
+        newErrors.phone = 'Phone number is required'
+      } else if (!/^[\d\s\-\(\)\+]+$/.test(formData.phone)) {
+        newErrors.phone = 'Please enter a valid phone number'
+      }
+    } else if (name === 'email') {
+      if (!formData.email.trim()) {
+        newErrors.email = 'Email address is required'
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        newErrors.email = 'Please enter a valid email address'
+      }
+    } else if (name === 'serviceNeeded' && !formData.serviceNeeded) {
+      newErrors.serviceNeeded = 'Please select a service'
+    } else if (name === 'privacyAccepted' && !formData.privacyAccepted) {
+      newErrors.privacyAccepted = 'You must accept the Privacy Policy'
+    }
+
+    if (newErrors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: newErrors[name] }))
     }
   }
 
@@ -184,6 +225,7 @@ export default function ContactSection() {
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Your full name"
                 className={errors.fullName ? 'contact-section__input--error' : ''}
                 aria-invalid={!!errors.fullName}
@@ -204,6 +246,7 @@ export default function ContactSection() {
                 name="companyName"
                 value={formData.companyName}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Your company name"
                 className={errors.companyName ? 'contact-section__input--error' : ''}
                 aria-invalid={!!errors.companyName}
@@ -224,6 +267,7 @@ export default function ContactSection() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="(555) 123-4567"
                 className={errors.phone ? 'contact-section__input--error' : ''}
                 aria-invalid={!!errors.phone}
@@ -244,6 +288,7 @@ export default function ContactSection() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="your@email.com"
                 className={errors.email ? 'contact-section__input--error' : ''}
                 aria-invalid={!!errors.email}
@@ -263,6 +308,7 @@ export default function ContactSection() {
                 name="serviceNeeded"
                 value={formData.serviceNeeded}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 className={errors.serviceNeeded ? 'contact-section__input--error' : ''}
                 aria-invalid={!!errors.serviceNeeded}
                 aria-describedby={errors.serviceNeeded ? 'serviceNeeded-error' : undefined}
@@ -288,6 +334,7 @@ export default function ContactSection() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Tell us about your needs..."
                 rows={4}
                 className={errors.message ? 'contact-section__input--error' : ''}
@@ -308,6 +355,7 @@ export default function ContactSection() {
                 name="privacyAccepted"
                 checked={formData.privacyAccepted}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 className={errors.privacyAccepted ? 'contact-section__input--error' : ''}
                 aria-invalid={!!errors.privacyAccepted}
                 aria-describedby={errors.privacyAccepted ? 'privacy-error' : undefined}

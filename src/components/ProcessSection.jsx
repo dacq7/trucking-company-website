@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import './ProcessSection.css'
 
 const steps = [
@@ -24,11 +25,31 @@ const steps = [
 ]
 
 export default function ProcessSection() {
+  const stepsRef = useRef(null)
+
+  useEffect(() => {
+    const el = stepsRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('reveal--visible')
+          observer.unobserve(el)
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="process-section section" id="process">
       <div className="container">
         <h2 className="section-title">How Our Service Process Works</h2>
-        <div className="process-section__steps">
+        <div className="process-section__steps" ref={stepsRef}>
           {steps.map((step, index) => (
             <article key={step.number} className="process-section__step">
               <div className="process-section__number">{step.number}</div>

@@ -74,7 +74,12 @@ export default function HeroCarousel() {
             aria-label={`Go to slide ${index + 1}`}
             className={`hero__indicator ${index === currentIndex ? 'hero__indicator--active' : ''}`}
             onClick={() => setCurrentIndex(index)}
-          />
+          >
+            <span
+              className="hero__indicator__fill"
+              key={index === currentIndex ? currentIndex : undefined}
+            />
+          </button>
         ))}
       </div>
     </section>

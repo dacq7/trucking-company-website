@@ -138,18 +138,41 @@
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.32);
   cursor: pointer;
-  transition:
-    background-color 0.3s var(--ease-out-expo),
-    width 0.3s var(--ease-out-expo);
+  transition: background-color 0.3s var(--ease-out-expo);
+  overflow: hidden;
 }
 
 .hero__indicator--active {
-  background-color: var(--color-white);
   width: 44px;
 }
 
 .hero__indicator:hover {
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero__indicator__fill {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-white);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.hero__indicator--active .hero__indicator__fill {
+  animation: hero-progress 5000ms linear forwards;
+}
+
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__indicator__fill {
+    animation: none;
+    transform: scaleX(1);
+  }
 }
 
 @media (max-width: 1280px) {

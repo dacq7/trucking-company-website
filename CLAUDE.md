@@ -19,7 +19,11 @@ Single-page React app (Vite + React 18 + React Router v6) deployed to GitHub Pag
 
 **Routing** — `src/App.jsx` defines two routes: `/` → `Home`, `/privacy-policy` → `PrivacyPolicy`. The router uses `BrowserRouter` with `basename={import.meta.env.BASE_URL}` so asset URLs must use the same prefix (e.g. `${import.meta.env.BASE_URL}images/logo/logo.svg`).
 
-**Page composition** — `src/pages/Home.jsx` stacks every section component in order and owns the single `IntersectionObserver` that drives scroll-reveal animations (`.reveal` / `.reveal--visible` classes). Sections do not manage their own reveal logic.
+**Page composition** — `src/pages/Home.jsx` stacks every section component in order and owns the single `IntersectionObserver` that drives scroll-reveal animations (`.reveal` / `.reveal--visible` classes). Sections do not manage their own reveal logic. When adding a new section with animated elements, you must add the element's CSS class selector to the `targets` query selector list in `Home.jsx`'s `useEffect`.
+
+**Section IDs** — Sections expose `id` attributes for smooth-scroll navigation (e.g., `id="home"`, `id="contact"`). The `HeroCarousel` scroll-to-contact button targets `#contact` directly via `document.getElementById`.
+
+**Shared privacy content** — `PrivacyPolicyContent` is a pure-render component used in two places: as a modal (`PrivacyPolicyModal`) triggered from `ContactSection`, and as the standalone `/privacy-policy` route (`src/pages/PrivacyPolicy`). Edit only `PrivacyPolicyContent.jsx` to update the policy text.
 
 **Styling approach** — Co-located CSS per component (`ComponentName.css` imported inside `ComponentName.jsx`). Global tokens live in `src/styles/global.css` (CSS custom properties) and shared layout utilities (`.container`, `.section`, `.grid-2/3`, `.btn-primary/secondary`, `.card`) live in `src/styles/layout.css`. Always prefer extending existing utility classes before writing new component-level rules.
 
