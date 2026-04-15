@@ -1,0 +1,47 @@
+.service-item__cta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.service-item__cta-quote {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--font-small);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease-out-expo);
+  min-height: var(--touch-target-min);
+}
+
+.service-item__cta-quote:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.service-item__cta-call {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: var(--font-small);
+  font-weight: 600;
+  border: 1.5px solid rgba(15, 42, 68, 0.25);
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease-out-expo), background-color 0.25s var(--ease-out-expo);
+  min-height: var(--touch-target-min);
+  text-decoration: none;
+}
+
+.service-item__cta-call:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(15, 42, 68, 0.04);
+}

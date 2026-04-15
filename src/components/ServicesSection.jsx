@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import './ServicesSection.css'
+import './ServiceItemCTA.css'
+import './SectionNudge.css'
 
 const services = [
   {
@@ -32,6 +35,10 @@ const services = [
 ]
 
 export default function ServicesSection() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const handleToggle = (index) => setOpenIndex((prev) => prev === index ? null : index)
+
   return (
     <section className="services-section section" id="services">
       <div className="container">
@@ -52,12 +59,45 @@ export default function ServicesSection() {
                 key={service.title}
                 className="services-section__item"
                 style={{ '--stagger-index': index }}
+                role="button"
+                aria-expanded={openIndex === index}
+                onClick={() => handleToggle(index)}
               >
                 <h3 className="services-section__item-title">{service.title}</h3>
                 <p className="services-section__item-desc">{service.description}</p>
+                {openIndex === index && (
+                  <div className="service-item__cta">
+                    <button
+                      className="service-item__cta-quote"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                        window.dispatchEvent(new CustomEvent('selectService', { detail: { service: 'Insurance Services' } }))
+                      }}
+                    >
+                      Get a Quote
+                    </button>
+                    <a
+                      href="tel:+18001234567"
+                      className="service-item__cta-call"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Speak with an Agent
+                    </a>
+                  </div>
+                )}
               </article>
             ))}
           </div>
+        </div>
+        <div className="section-nudge">
+          <p className="section-nudge__text">Looking for the right coverage for your fleet?</p>
+          <button
+            className="section-nudge__link"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Get a free quote <span className="section-nudge__arrow">→</span>
+          </button>
         </div>
       </div>
     </section>

@@ -1,0 +1,134 @@
+.privacy-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: calc(var(--navbar-height) + 24px) 24px 24px;
+  backdrop-filter: blur(4px);
+  animation: privacy-modal-overlay-in 250ms var(--ease-out-expo) both;
+}
+
+.privacy-modal__box {
+  width: 100%;
+  max-width: 720px;
+  max-height: calc(100vh - var(--navbar-height) - 48px);
+  max-height: calc(100dvh - var(--navbar-height) - 48px);
+  background: var(--color-white);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(15, 42, 68, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: privacy-modal-box-in 320ms var(--ease-out-expo) both;
+}
+
+.privacy-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(15, 42, 68, 0.08);
+  flex-shrink: 0;
+}
+
+.privacy-modal__header-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.015em;
+}
+
+.privacy-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  color: var(--color-medium-gray);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.privacy-modal__close:hover {
+  background-color: rgba(15, 42, 68, 0.06);
+  color: var(--color-primary);
+}
+
+.privacy-modal__body {
+  overflow-y: auto;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.privacy-modal__toc {
+  background: var(--color-light-gray);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.privacy-modal__toc-title {
+  font-size: var(--font-small);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.01em;
+}
+
+.privacy-modal__toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.privacy-modal__toc-link {
+  font-size: var(--font-small);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.privacy-modal__toc-link:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+@keyframes privacy-modal-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes privacy-modal-box-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .privacy-modal__overlay {
+    padding: calc(var(--navbar-height) + 12px) 12px 12px;
+  }
+
+  .privacy-modal__body {
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-modal__overlay,
+  .privacy-modal__box {
+    animation: none;
+  }
+}

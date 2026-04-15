@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './ContactSection.css'
 import PrivacyPolicyModal from './PrivacyPolicyModal'
 
@@ -39,6 +39,14 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
+
+  useEffect(() => {
+    const handler = (e) => {
+      setFormData((prev) => ({ ...prev, serviceNeeded: e.detail.service }))
+    }
+    window.addEventListener('selectService', handler)
+    return () => window.removeEventListener('selectService', handler)
+  }, [])
 
   const validateForm = () => {
     const newErrors = { ...initialErrors }

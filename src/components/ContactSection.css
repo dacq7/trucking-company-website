@@ -139,45 +139,6 @@
   text-decoration: none;
 }
 
-.contact-section__modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: calc(var(--navbar-height) + 24px) 24px 24px;
-}
-
-.contact-section__modal {
-  width: 100%;
-  max-width: 900px;
-  max-height: calc(100vh - var(--navbar-height) - 48px);
-  max-height: calc(100dvh - var(--navbar-height) - 48px);
-  overflow: auto;
-  position: relative;
-}
-
-.contact-section__modal-body {
-  padding-top: 0.5rem;
-}
-
-.contact-section__modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--touch-target-min);
-  height: var(--touch-target-min);
-  border: none;
-  background: none;
-  font-size: 28px;
-  line-height: 1;
-  color: var(--color-primary);
-}
 
 .contact-section__submit {
   margin-top: 0.5rem;

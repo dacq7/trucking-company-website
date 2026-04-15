@@ -13,6 +13,7 @@ import AboutSection from '../components/AboutSection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
+import StickyCtaBar from '../components/StickyCtaBar'
 
 export default function Home() {
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function Home() {
         '.process-section__step',
         // Tags
         '.operating-states-section__tag',
-        '.operation-types-section__tag',
+        '.operation-types-section__card',
       ].join(','),
     )
 
@@ -69,6 +70,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <StickyCtaBar />
       <main>
         <HeroCarousel />
         <TrustSection />

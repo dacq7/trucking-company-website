@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import './MobileWeldingSection.css'
+import './ServiceItemCTA.css'
+import './SectionNudge.css'
 
 const mobileWeldingServices = [
   {
@@ -28,6 +31,10 @@ const mobileWeldingServices = [
 ]
 
 export default function MobileWeldingSection() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const handleToggle = (index) => setOpenIndex((prev) => prev === index ? null : index)
+
   return (
     <section className="mobile-welding-section section" id="mobile-welding">
       <div className="container">
@@ -48,12 +55,45 @@ export default function MobileWeldingSection() {
                 key={service.title}
                 className="mobile-welding-section__item"
                 style={{ '--stagger-index': index }}
+                role="button"
+                aria-expanded={openIndex === index}
+                onClick={() => handleToggle(index)}
               >
                 <h3 className="mobile-welding-section__item-title">{service.title}</h3>
                 <p className="mobile-welding-section__item-desc">{service.description}</p>
+                {openIndex === index && (
+                  <div className="service-item__cta">
+                    <button
+                      className="service-item__cta-quote"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                        window.dispatchEvent(new CustomEvent('selectService', { detail: { service: 'Insurance Services' } }))
+                      }}
+                    >
+                      Get a Quote
+                    </button>
+                    <a
+                      href="tel:+18001234567"
+                      className="service-item__cta-call"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Speak with an Agent
+                    </a>
+                  </div>
+                )}
               </article>
             ))}
           </div>
+        </div>
+        <div className="section-nudge">
+          <p className="section-nudge__text">Need mobile welding for your truck or trailer?</p>
+          <button
+            className="section-nudge__link"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Contact our team <span className="section-nudge__arrow">→</span>
+          </button>
         </div>
       </div>
     </section>
