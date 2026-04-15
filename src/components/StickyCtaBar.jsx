@@ -45,7 +45,7 @@ export default function StickyCtaBar() {
         Get a Quote
       </button>
       <a
-        href="tel:+18001234567"
+        href="tel:+18325809402"
         className="sticky-cta-bar__call"
         aria-label="Call an agent"
       >

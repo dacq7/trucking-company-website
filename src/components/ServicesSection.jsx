@@ -78,7 +78,7 @@ export default function ServicesSection() {
                       Get a Quote
                     </button>
                     <a
-                      href="tel:+18001234567"
+                      href="tel:+18325809402"
                       className="service-item__cta-call"
                       onClick={(e) => e.stopPropagation()}
                     >

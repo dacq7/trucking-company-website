@@ -58,7 +58,7 @@ export default function HeroCarousel() {
             <a href="#contact" className="btn-primary hero__btn" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
               Get a Quote
             </a>
-            <a href="tel:+18001234567" className="btn-secondary hero__btn">
+            <a href="tel:+18325809402" className="btn-secondary hero__btn">
               Speak With an Agent
             </a>
           </div>
