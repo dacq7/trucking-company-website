@@ -58,8 +58,8 @@ export default function HeroCarousel() {
             <a href="#contact" className="btn-primary hero__btn" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
               Get a Quote
             </a>
-            <a href="tel:+18325809402" className="btn-secondary hero__btn">
-              Speak With an Agent
+            <a href="https://wa.me/18325809402" className="btn-secondary hero__btn" target="_blank" rel="noopener noreferrer">
+              Chat on WhatsApp
             </a>
           </div>
         </div>

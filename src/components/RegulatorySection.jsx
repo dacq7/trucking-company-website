@@ -102,11 +102,13 @@ export default function RegulatorySection() {
                       Get a Quote
                     </button>
                     <a
-                      href="tel:+18325809402"
+                      href="https://wa.me/18325809402"
                       className="service-item__cta-call"
                       onClick={(e) => e.stopPropagation()}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      Speak with an Agent
+                      Chat on WhatsApp
                     </a>
                   </div>
                 )}
