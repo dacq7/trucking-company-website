@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import './PrivacyPolicyModal.css'
 import PrivacyPolicyContent from './PrivacyPolicyContent'
 
-export default function PrivacyPolicyModal({ isOpen, onClose }) {
+export default function PrivacyPolicyModal({ isOpen, onClose, onAccept }) {
   useEffect(() => {
     if (!isOpen) return
     const onKeyDown = (e) => {
@@ -43,6 +43,22 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
         </div>
         <div className="privacy-modal__body">
           <PrivacyPolicyContent showToc={true} />
+        </div>
+        <div className="privacy-modal__footer">
+          <button
+            type="button"
+            className="privacy-modal__footer-close"
+            onClick={onClose}
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            className="privacy-modal__footer-accept"
+            onClick={onAccept}
+          >
+            I Accept
+          </button>
         </div>
       </div>
     </div>

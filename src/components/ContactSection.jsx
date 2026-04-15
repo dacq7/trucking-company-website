@@ -409,7 +409,15 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <PrivacyPolicyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <PrivacyPolicyModal
+        isOpen={isPrivacyOpen}
+        onClose={() => setIsPrivacyOpen(false)}
+        onAccept={() => {
+          setFormData((prev) => ({ ...prev, privacyAccepted: true }))
+          setErrors((prev) => ({ ...prev, privacyAccepted: '' }))
+          setIsPrivacyOpen(false)
+        }}
+      />
     </section>
   )
 }
