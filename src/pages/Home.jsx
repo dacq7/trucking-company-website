@@ -71,8 +71,8 @@ export default function Home() {
         <HeroCarousel />
         <TrustSection />
         <ServicesSection />
-        <MobileWeldingSection />
         <RegulatorySection />
+        <MobileWeldingSection />
         <RoadsideSection />
         <ProcessSection />
         <CoverageSection />
