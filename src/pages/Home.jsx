@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import HeroCarousel from '../components/HeroCarousel'
 import TrustSection from '../components/TrustSection'
-import OperatingStatesSection from '../components/OperatingStatesSection'
-import OperationTypesSection from '../components/OperationTypesSection'
+import CoverageSection from '../components/CoverageSection'
 import ServicesSection from '../components/ServicesSection'
 import MobileWeldingSection from '../components/MobileWeldingSection'
 import RegulatorySection from '../components/RegulatorySection'
@@ -39,9 +38,6 @@ export default function Home() {
         '.about-section__value',
         // Process steps
         '.process-section__step',
-        // Tags
-        '.operating-states-section__tag',
-        '.operation-types-section__card',
       ].join(','),
     )
 
@@ -74,13 +70,12 @@ export default function Home() {
       <main>
         <HeroCarousel />
         <TrustSection />
-        <OperatingStatesSection />
-        <OperationTypesSection />
         <ServicesSection />
         <MobileWeldingSection />
         <RegulatorySection />
         <RoadsideSection />
         <ProcessSection />
+        <CoverageSection />
         <AboutSection />
         <TestimonialsSection />
         <ContactSection />
