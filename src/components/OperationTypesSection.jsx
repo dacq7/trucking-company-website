@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './OperationTypesSection.css'
 
 const operationTypes = [
@@ -99,6 +100,8 @@ const operationTypes = [
 ]
 
 export default function OperationTypesSection() {
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <section className="operation-types-section section" id="operations">
       <div className="container">
@@ -106,21 +109,30 @@ export default function OperationTypesSection() {
         <p className="section-description">
           We tailor insurance and compliance solutions to a wide range of trucking operation types.
         </p>
-        <div className="operation-types-section__grid">
-          {operationTypes.map((type, index) => (
-            <article
-              key={type.name}
-              className="operation-types-section__card"
-              style={{ '--stagger-index': index }}
-            >
-              <span className="operation-types-section__icon" aria-hidden="true">
-                {type.icon}
-              </span>
-              <h3 className="operation-types-section__name">{type.name}</h3>
-              <p className="operation-types-section__desc">{type.description}</p>
-            </article>
-          ))}
+        <div className={`operation-types-section__collapsible ${expanded ? 'operation-types-section__collapsible--open' : ''}`}>
+          <div className="operation-types-section__grid">
+            {operationTypes.map((type, index) => (
+              <article
+                key={type.name}
+                className="operation-types-section__card"
+                style={{ '--stagger-index': index }}
+              >
+                <span className="operation-types-section__icon" aria-hidden="true">
+                  {type.icon}
+                </span>
+                <h3 className="operation-types-section__name">{type.name}</h3>
+                <p className="operation-types-section__desc">{type.description}</p>
+              </article>
+            ))}
+          </div>
         </div>
+        <button
+          className="operation-types-section__toggle"
+          onClick={() => setExpanded((prev) => !prev)}
+          aria-expanded={expanded}
+        >
+          {expanded ? 'Show less ↑' : 'View all 19 operation types ↓'}
+        </button>
       </div>
     </section>
   )
