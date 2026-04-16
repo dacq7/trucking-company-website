@@ -35,6 +35,12 @@ Single-page React app (Vite + React 18 + React Router v6) deployed to GitHub Pag
 
 **Navbar** — Smart hide/show behavior: hides after scrolling down 65 px past the last show-position; re-appears on any upward scroll. Never hides within the top 80 px safe zone. State is tracked with refs to avoid stale-closure issues inside the `requestAnimationFrame` callback.
 
+**StickyCtaBar** — Floats a "Get a Quote" button and a WhatsApp link. Becomes visible once the hero (`#home`) scrolls out of view; hides again when the contact section (`#contact`) enters view. Uses its own `IntersectionObserver`.
+
+**`selectService` custom event** — Service CTA buttons (in `ServicesSection`, `MobileWeldingSection`, `RegulatorySection`, `RoadsideSection`) dispatch `window.dispatchEvent(new CustomEvent('selectService', { detail: { service: '…' } }))` to pre-fill the service dropdown in `ContactSection`. `ContactSection` listens for this event in a `useEffect`. When adding a new service section with a CTA that should pre-select a service, dispatch this same event.
+
+**Contact form** — Submits via `fetch` POST to a Google Apps Script web app URL (hardcoded in `ContactSection.jsx`). There is no server-side component in this repo; the script handles storage/notification on the Google side.
+
 **Static assets** — Images live in `public/images/` (hero, services, regulatory, etc.) and are referenced as `${import.meta.env.BASE_URL}images/...` to remain portable between dev and the GitHub Pages sub-path.
 
 **Docs** — `docs/design-system.md` is the authoritative visual spec (colors, spacing, typography, component rules). `docs/website-content.md` and `docs/site-structure.md` contain the content/copy and page structure respectively.
