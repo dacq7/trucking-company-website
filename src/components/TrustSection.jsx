@@ -100,15 +100,12 @@ export default function TrustSection() {
                       {item.cta.label} <span className="trust-section__micro-arrow">→</span>
                     </button>
                   ) : (
-                    <a
-                      href={item.cta.target}
+                    <button
                       className="trust-section__micro-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => { e.stopPropagation(); window.dispatchEvent(new CustomEvent('openWhatsAppWidget')); }}
                     >
                       {item.cta.label} <span className="trust-section__micro-arrow">→</span>
-                    </a>
+                    </button>
                   )}
                 </div>
               )}

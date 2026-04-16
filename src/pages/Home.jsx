@@ -13,6 +13,7 @@ import TestimonialsSection from '../components/TestimonialsSection'
 import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import StickyCtaBar from '../components/StickyCtaBar'
+import WhatsAppWidget from '../components/WhatsAppWidget'
 
 export default function Home() {
   useEffect(() => {
@@ -67,6 +68,7 @@ export default function Home() {
     <>
       <Navbar />
       <StickyCtaBar />
+      <WhatsAppWidget />
       <main>
         <HeroCarousel />
         <TrustSection />

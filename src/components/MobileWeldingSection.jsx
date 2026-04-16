@@ -73,15 +73,12 @@ export default function MobileWeldingSection() {
                     >
                       Get a Quote
                     </button>
-                    <a
-                      href="https://wa.me/18325809402"
+                    <button
                       className="service-item__cta-call"
-                      onClick={(e) => e.stopPropagation()}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={(e) => { e.stopPropagation(); window.dispatchEvent(new CustomEvent('openWhatsAppWidget')); }}
                     >
                       Chat on WhatsApp
-                    </a>
+                    </button>
                   </div>
                 )}
               </article>
