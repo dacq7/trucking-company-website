@@ -4,6 +4,27 @@ import {
   Geographies,
   Geography,
 } from 'react-simple-maps'
+import {
+  Truck,
+  Snowflake,
+  Container,
+  Package,
+  Zap,
+  Box,
+  Droplets,
+  Train,
+  Car,
+  AlertTriangle,
+  Mountain,
+  Shovel,
+  Wind,
+  PawPrint,
+  Recycle,
+  Building2,
+  Van,
+  Trash2,
+  Bus,
+} from 'lucide-react'
 import './CoverageSection.css'
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'
@@ -14,25 +35,25 @@ const OPERATING_STATES = [
 ]
 
 const operationTypes = [
-  { name: 'Dry Van', icon: '🚛' },
-  { name: 'Reefer', icon: '❄️' },
-  { name: 'Flatbed', icon: '🚚' },
-  { name: 'Step Deck', icon: '📦' },
-  { name: 'Hot Shot', icon: '⚡' },
-  { name: 'Box Truck', icon: '🏙️' },
-  { name: 'Tanker', icon: '🛢️' },
-  { name: 'Intermodal', icon: '🚂' },
-  { name: 'Auto Hauler', icon: '🚗' },
-  { name: 'Hazmat', icon: '⚠️' },
-  { name: 'Frac Sand', icon: '🛢️' },
-  { name: 'Sand & Gravel', icon: '🏗️' },
-  { name: 'Dry Bulk', icon: '🌾' },
-  { name: 'Livestock', icon: '🐄' },
-  { name: 'Scrap Metal', icon: '♻️' },
-  { name: 'Mixer', icon: '🏛️' },
-  { name: 'Cargo Van', icon: '🚐' },
-  { name: 'Garbage', icon: '🗑️' },
-  { name: 'Bus', icon: '🚌' },
+  { name: 'Dry Van', icon: Truck },
+  { name: 'Reefer', icon: Snowflake },
+  { name: 'Flatbed', icon: Container },
+  { name: 'Step Deck', icon: Package },
+  { name: 'Hot Shot', icon: Zap },
+  { name: 'Box Truck', icon: Box },
+  { name: 'Tanker', icon: Droplets },
+  { name: 'Intermodal', icon: Train },
+  { name: 'Auto Hauler', icon: Car },
+  { name: 'Hazmat', icon: AlertTriangle },
+  { name: 'Frac Sand', icon: Mountain },
+  { name: 'Sand & Gravel', icon: Shovel },
+  { name: 'Dry Bulk', icon: Wind },
+  { name: 'Livestock', icon: PawPrint },
+  { name: 'Scrap Metal', icon: Recycle },
+  { name: 'Mixer', icon: Building2 },
+  { name: 'Cargo Van', icon: Van },
+  { name: 'Garbage', icon: Trash2 },
+  { name: 'Bus', icon: Bus },
 ]
 
 export default function CoverageSection() {
@@ -123,7 +144,12 @@ export default function CoverageSection() {
             <div className="coverage-section__types-grid">
               {operationTypes.map((type) => (
                 <div key={type.name} className="coverage-section__type-item">
-                  <span className="coverage-section__type-icon" aria-hidden="true">{type.icon}</span>
+                  <type.icon
+                    size={16}
+                    strokeWidth={1.75}
+                    className="coverage-section__type-icon"
+                    aria-hidden="true"
+                  />
                   <span className="coverage-section__type-name">{type.name}</span>
                 </div>
               ))}
