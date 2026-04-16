@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './TestimonialsSection.css'
 
 const testimonials = [
@@ -24,9 +24,36 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0)
+  const intervalRef = useRef(null)
 
-  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length)
-  const next = () => setActive((a) => (a + 1) % testimonials.length)
+  const startAutoplay = () => {
+    clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => {
+      setActive((a) => (a + 1) % testimonials.length)
+    }, 5000)
+  }
+
+  const pauseAndResume = () => {
+    clearInterval(intervalRef.current)
+    intervalRef.current = setTimeout(() => {
+      startAutoplay()
+    }, 8000)
+  }
+
+  useEffect(() => {
+    startAutoplay()
+    return () => clearInterval(intervalRef.current)
+  }, [])
+
+  const prev = () => {
+    setActive((a) => (a - 1 + testimonials.length) % testimonials.length)
+    pauseAndResume()
+  }
+
+  const next = () => {
+    setActive((a) => (a + 1) % testimonials.length)
+    pauseAndResume()
+  }
 
   return (
     <section className="testimonials-section section" id="testimonials">
@@ -59,7 +86,7 @@ export default function TestimonialsSection() {
                 <button
                   key={i}
                   className={`testimonials-section__dot ${i === active ? 'testimonials-section__dot--active' : ''}`}
-                  onClick={() => setActive(i)}
+                  onClick={() => { setActive(i); pauseAndResume() }}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
