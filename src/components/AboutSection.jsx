@@ -4,7 +4,7 @@ import './SectionNudge.css'
 
 const stats = [
   { value: 100, suffix: '+', label: 'Businesses Served' },
-  { value: 8, suffix: '', label: 'States Covered' },
+  { value: 11, suffix: '', label: 'States Covered' },
   { value: 48, suffix: '-hr', label: 'Avg. Processing Time' },
   { value: 19, suffix: '+', label: 'Operation Types Supported' },
 ]

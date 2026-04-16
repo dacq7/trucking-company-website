@@ -30,8 +30,9 @@ import './CoverageSection.css'
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'
 
 const OPERATING_STATES = [
-  'Arizona', 'California', 'Florida', 'Illinois',
-  'New Mexico', 'North Carolina', 'South Carolina', 'Texas',
+  'Arizona', 'Arkansas', 'California', 'Florida', 'Georgia',
+  'Illinois', 'New Mexico', 'North Carolina', 'Oklahoma',
+  'South Carolina', 'Texas',
 ]
 
 const operationTypes = [
@@ -67,7 +68,7 @@ export default function CoverageSection() {
           <div>
             <h2 className="section-title">Coverage & Specializations</h2>
             <p className="section-description">
-              8 active states. 19 operation types. One team that knows trucking.
+              11 active states. 19 operation types. One team that knows trucking.
             </p>
           </div>
           <button
