@@ -44,9 +44,9 @@ export default function CoverageSection() {
       <div className="container">
         <div className="coverage-section__header">
           <div>
-            <h2 className="section-title">Where We Operate</h2>
+            <h2 className="section-title">Coverage & Specializations</h2>
             <p className="section-description">
-              Serving trucking companies across 8 states and 19 operation types.
+              8 active states. 19 operation types. One team that knows trucking.
             </p>
           </div>
           <button
